@@ -12,17 +12,19 @@ podTemplate(label: 'performace_tests', containers: [
 
         sh "jmeter -n -t wordContextTest.jmx -l wordContextTest.jtl -Jthreads 100 -Jduration 300"
         archiveArtifacts(artifacts: 'wordContextTest.jtl', fingerprint: true)
-        perfReport("wordContextTest.jtl")
       }
     }
 
     stage('Test Project By Slug') {
       container('jmeter') {
-        def scmVars = checkout scm
-
         sh "jmeter -n -t projectBySlugTest.jmx -l projectBySlugTest.jtl -Jthreads 20 -Jduration 300"
         archiveArtifacts(artifacts: 'projectBySlugTest.jtl', fingerprint: true)
-        perfReport("projectBySlugTest.jtl")
+      }
+    }
+
+    stage('Generate Report') {
+      container('jmeter') {
+        perfReport(sourceDataFiles: "projectBySlugTest.jtl;wordContextTest.jtl")
       }
     }
   }
