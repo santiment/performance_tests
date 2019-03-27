@@ -13,11 +13,13 @@ podTemplate(label: 'performace_tests', containers: [
         sh "jmeter -n -t wordContextTest.jmx -e -o results -l result.jtl -Jthreads 10 -Jduration 60"
         archiveArtifacts(artifacts: 'results/**', fingerprint: true)
         archiveArtifacts(artifacts: 'result.jtl', fingerprint: true)
-        publishHTML(
+        publishHTML(target: [
+          allowMissing: false,
           reportName: "Word ContextPerformance Report",
           reportDir: "results",
+          reportFiles: "index.html",
           keepAll: true
-        )
+        ])
       }
     }
   }
