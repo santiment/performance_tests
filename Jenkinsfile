@@ -1,7 +1,8 @@
 podTemplate(label: 'performace_tests', containers: [
   containerTemplate(
     name: 'jmeter',
-    image: 'justb4/jmeter'
+    image: 'justb4/jmeter',
+    command: '/bin/sh'
   )
 ]) {
   node('performace_tests') {
