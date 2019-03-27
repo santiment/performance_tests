@@ -10,17 +10,9 @@ podTemplate(label: 'performace_tests', containers: [
       container('jmeter') {
         def scmVars = checkout scm
 
-        sh "jmeter -n -t wordContextTest.jmx -e -o results -l result.jtl -Jthreads 10 -Jduration 60"
-        archiveArtifacts(artifacts: 'results/**', fingerprint: true)
+        sh "jmeter -n -t wordContextTest.jmx -l result.jtl -Jthreads 100 -Jduration 300"
         archiveArtifacts(artifacts: 'result.jtl', fingerprint: true)
         perfReport("result.jtl")
-        publishHTML(target: [
-          allowMissing: false,
-          reportName: "Word ContextPerformance Report",
-          reportDir: "results",
-          reportFiles: "index.html",
-          keepAll: true
-        ])
       }
     }
   }
