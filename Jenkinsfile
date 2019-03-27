@@ -10,9 +10,9 @@ podTemplate(label: 'performace_tests', containers: [
       container('jmeter') {
         def scmVars = checkout scm
 
-        sh "jmeter -n -t wordContextTest.jmx -l result.jtl -Jthreads 100 -Jduration 300"
-        archiveArtifacts(artifacts: 'result.jtl', fingerprint: true)
-        perfReport("result.jtl")
+        sh "jmeter -n -t wordContextTest.jmx -l wordContextTest.jtl -Jthreads 100 -Jduration 300"
+        archiveArtifacts(artifacts: 'wordContextTest.jtl', fingerprint: true)
+        perfReport("wordContextTest.jtl")
       }
     }
 
@@ -20,9 +20,9 @@ podTemplate(label: 'performace_tests', containers: [
       container('jmeter') {
         def scmVars = checkout scm
 
-        sh "jmeter -n -t projectBySlugTest.jmx -l result.jtl -Jthreads 10 -Jduration 300"
-        archiveArtifacts(artifacts: 'result.jtl', fingerprint: true)
-        perfReport("result.jtl")
+        sh "jmeter -n -t projectBySlugTest.jmx -l projectBySlugTest.jtl -Jthreads 20 -Jduration 300"
+        archiveArtifacts(artifacts: 'projectBySlugTest.jtl', fingerprint: true)
+        perfReport("projectBySlugTest.jtl")
       }
     }
   }
