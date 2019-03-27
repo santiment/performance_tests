@@ -10,8 +10,8 @@ podTemplate(label: 'performace_tests', containers: [
       container('jmeter') {
         def scmVars = checkout scm
 
-        sh "ls -l"
-        sh "jmeter -n -t wordContextTest.jmx -e -o results -l result.jtl -Jthreads 10 -Jduration 300"
+        sh "jmeter -j jmeter.log -n -t wordContextTest.jmx -e -o results -l result.jtl -Jthreads 10 -Jduration 300"
+        sh "cat jmeter.log"
         archiveArtifacts(artifacts: 'results/**', fingerprint: true)
         archiveArtifacts(artifacts: 'result.jtl', fingerprint: true)
         perfReport 'result.jtl'
