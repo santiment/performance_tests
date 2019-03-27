@@ -1,3 +1,7 @@
+properties([
+  pipelineTriggers([cron('H 23 * * *')]),
+  disableConcurrentBuilds()
+])
 podTemplate(label: 'performace_tests', containers: [
   containerTemplate(
     name: 'jmeter',
