@@ -140,7 +140,7 @@ Make test last 1 minute (see Scheduler)</stringProp>
       address&#xd;
       __typename&#xd;
     }&#xd;
-    ethTopTransactions(from: &quot;${__timeShift(yyyy-MM-dd&apos;T&apos;HH:mm:ss,,P-3M,)}Z&quot;, to: &quot;${__time(yyyy-MM-dd&apos;T&apos;HH:mm:ss)}Z&quot;) {&#xd;
+    ethTopTransactions(from: &quot;${__timeShift(yyyy-MM-dd&apos;T&apos;HH:mm:ss,,P-90D,)}Z&quot;, to: &quot;${__time(yyyy-MM-dd&apos;T&apos;HH:mm:ss)}Z&quot;) {&#xd;
       datetime&#xd;
       trxValue&#xd;
       trxHash&#xd;
@@ -156,7 +156,7 @@ Make test last 1 minute (see Scheduler)</stringProp>
       }&#xd;
       __typename&#xd;
     }&#xd;
-    tokenTopTransactions(from: &quot;${__timeShift(yyyy-MM-dd&apos;T&apos;HH:mm:ss,,P-3M,)}Z&quot;, to: &quot;${__time(yyyy-MM-dd&apos;T&apos;HH:mm:ss)}Z&quot;) {&#xd;
+    tokenTopTransactions(from: &quot;${__timeShift(yyyy-MM-dd&apos;T&apos;HH:mm:ss,,P-90D,)}Z&quot;, to: &quot;${__time(yyyy-MM-dd&apos;T&apos;HH:mm:ss)}Z&quot;) {&#xd;
       datetime&#xd;
       trxValue&#xd;
       trxHash&#xd;
@@ -169,7 +169,7 @@ Make test last 1 minute (see Scheduler)</stringProp>
         isExchange&#xd;
       }&#xd;
     }&#xd;
-    ethSpentOverTime(from: &quot;${__timeShift(yyyy-MM-dd&apos;T&apos;HH:mm:ss,,P-3M,)}Z&quot;, to: &quot;${__time(yyyy-MM-dd&apos;T&apos;HH:mm:ss)}Z&quot;, interval: &quot;1w&quot;) {&#xd;
+    ethSpentOverTime(from: &quot;${__timeShift(yyyy-MM-dd&apos;T&apos;HH:mm:ss,,P-90D,)}Z&quot;, to: &quot;${__time(yyyy-MM-dd&apos;T&apos;HH:mm:ss)}Z&quot;, interval: &quot;1w&quot;) {&#xd;
       datetime&#xd;
       ethSpent&#xd;
     }&#xd;
