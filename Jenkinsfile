@@ -1,4 +1,4 @@
-podTemplate(label: 'clickhouse-tables', containers: [
+podTemplate(label: 'performace_tests', containers: [
   containerTemplate(
     name: 'jmeter',
     image: 'justb4/jmeter'
