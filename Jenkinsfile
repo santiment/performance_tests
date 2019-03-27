@@ -6,10 +6,11 @@ podTemplate(label: 'performace_tests', containers: [
   )
 ]) {
   node('performace_tests') {
-    stage('Run Build') {
+    stage('Test Word Context') {
       container('jmeter') {
         def scmVars = checkout scm
 
+        sh "ls -l"
         sh "jmeter -n -t wordContextTest.jmx -e -o results -l result.jtl -Jthreads 10 -Jduration 300"
         archiveArtifacts(artifacts: 'results/**', fingerprint: true)
         archiveArtifacts(artifacts: 'result.jtl', fingerprint: true)
