@@ -2,7 +2,7 @@ podTemplate(label: 'performace_tests', containers: [
   containerTemplate(
     name: 'jmeter',
     image: 'justb4/jmeter',
-    command: '/bin/tail -f /dev/null'
+    command: '/bin/cat'
   )
 ]) {
   node('performace_tests') {
