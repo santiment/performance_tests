@@ -7,64 +7,9 @@
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
         <collectionProp name="Arguments.arguments">
-          <elementProp name="word_matchNr" elementType="Argument">
-            <stringProp name="Argument.name">word_matchNr</stringProp>
-            <stringProp name="Argument.value">10</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="word_1" elementType="Argument">
-            <stringProp name="Argument.name">word_1</stringProp>
-            <stringProp name="Argument.value">bnb</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="word_2" elementType="Argument">
-            <stringProp name="Argument.name">word_2</stringProp>
-            <stringProp name="Argument.value">bitcoin</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="word_3" elementType="Argument">
-            <stringProp name="Argument.name">word_3</stringProp>
-            <stringProp name="Argument.value">xrp</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="word_4" elementType="Argument">
-            <stringProp name="Argument.name">word_4</stringProp>
-            <stringProp name="Argument.value">ethereum</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="word_5" elementType="Argument">
-            <stringProp name="Argument.name">word_5</stringProp>
-            <stringProp name="Argument.value">bch</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="word_6" elementType="Argument">
-            <stringProp name="Argument.name">word_6</stringProp>
-            <stringProp name="Argument.value">usdt</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="word_7" elementType="Argument">
-            <stringProp name="Argument.name">word_7</stringProp>
-            <stringProp name="Argument.value">qlc</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="word_8" elementType="Argument">
-            <stringProp name="Argument.name">word_8</stringProp>
-            <stringProp name="Argument.value">bat</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="word_9" elementType="Argument">
-            <stringProp name="Argument.name">word_9</stringProp>
-            <stringProp name="Argument.value">ltc</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="word_10" elementType="Argument">
-            <stringProp name="Argument.name">word_10</stringProp>
-            <stringProp name="Argument.value">eos</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
           <elementProp name="THREADS" elementType="Argument">
             <stringProp name="Argument.name">THREADS</stringProp>
-            <stringProp name="Argument.value">${__P(threads, 50)}</stringProp>
+            <stringProp name="Argument.value">${__P(threads, 10)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="DURATION" elementType="Argument">
@@ -132,6 +77,18 @@ Connect to 5s</stringProp>
 Make test last 1 minute (see Scheduler)</stringProp>
       </ThreadGroup>
       <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="filename">/Users/valentin/workspace/santiment/performance_tests/word_context_dataset.csv</stringProp>
+          <boolProp name="ignoreFirstLine">false</boolProp>
+          <boolProp name="quotedData">true</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">WORD</stringProp>
+        </CSVDataSet>
+        <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Word Context" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
@@ -139,7 +96,7 @@ Make test last 1 minute (see Scheduler)</stringProp>
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">{&#xd;
-  wordContext(from:&quot;${__timeShift(yyyy-MM-dd&apos;T&apos;HH:mm:ss,,P-1D,)}Z&quot;, to:&quot;${__time(yyyy-MM-dd&apos;T&apos;HH:mm:ss)}Z&quot;, size:20, word:&quot;${__RandomFromMultipleVars(word)}&quot;, source:ALL) {&#xd;
+  wordContext(from:&quot;${__timeShift(yyyy-MM-dd&apos;T&apos;HH:mm:ss,,P-1D,)}Z&quot;, to:&quot;${__time(yyyy-MM-dd&apos;T&apos;HH:mm:ss)}Z&quot;, size:20, word:&quot;${WORD}&quot;, source:ALL) {&#xd;
     word&#xd;
     score&#xd;
   }&#xd;
