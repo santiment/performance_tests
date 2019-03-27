@@ -26,9 +26,16 @@ podTemplate(label: 'performace_tests', containers: [
       }
     }
 
+    stage('Test All Project Balances') {
+      container('jmeter') {
+        sh "jmeter -n -t allProjectsBalancesTest.jmx -l allProjectsBalancesTest.jtl -Jthreads 20 -Jduration 300"
+        archiveArtifacts(artifacts: 'allProjectsBalancesTest.jtl', fingerprint: true)
+      }
+    }
+
     stage('Generate Report') {
       container('jmeter') {
-        perfReport(sourceDataFiles: "projectBySlugTest.jtl;wordContextTest.jtl")
+        perfReport(sourceDataFiles: "projectBySlugTest.jtl;wordContextTest.jtl;allProjectsBalancesTest.jtl")
       }
     }
   }
