@@ -14,21 +14,21 @@ podTemplate(label: 'performace_tests', containers: [
       container('jmeter') {
         def scmVars = checkout scm
 
-        sh "jmeter -n -t wordContextTest.jmx -l wordContextTest.jtl -Jthreads 100 -Jduration 300"
+        sh "jmeter -n -t wordContextTest.jmx -l wordContextTest.jtl -Jthreads 200 -Jduration 300"
         archiveArtifacts(artifacts: 'wordContextTest.jtl', fingerprint: true)
       }
     }
 
     stage('Test Project By Slug') {
       container('jmeter') {
-        sh "jmeter -n -t projectBySlugTest.jmx -l projectBySlugTest.jtl -Jthreads 20 -Jduration 300"
+        sh "jmeter -n -t projectBySlugTest.jmx -l projectBySlugTest.jtl -Jthreads 200 -Jduration 300"
         archiveArtifacts(artifacts: 'projectBySlugTest.jtl', fingerprint: true)
       }
     }
 
     stage('Test All Project Balances') {
       container('jmeter') {
-        sh "jmeter -n -t allProjectsBalancesTest.jmx -l allProjectsBalancesTest.jtl -Jthreads 50 -Jduration 300"
+        sh "jmeter -n -t allProjectsBalancesTest.jmx -l allProjectsBalancesTest.jtl -Jthreads 200 -Jduration 300"
         archiveArtifacts(artifacts: 'allProjectsBalancesTest.jtl', fingerprint: true)
       }
     }
