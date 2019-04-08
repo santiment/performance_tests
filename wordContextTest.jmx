@@ -17,9 +17,9 @@
             <stringProp name="Argument.value">${__P(duration, 300)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="API_URL" elementType="Argument">
-            <stringProp name="Argument.name">API_URL</stringProp>
-            <stringProp name="Argument.value">${__P(api_url, api-stage.santiment.net)}</stringProp>
+          <elementProp name="API_HOST" elementType="Argument">
+            <stringProp name="Argument.name">API_HOST</stringProp>
+            <stringProp name="Argument.value">${__P(api_host, api-stage.santiment.net)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -31,7 +31,7 @@
         <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
           <collectionProp name="Arguments.arguments"/>
         </elementProp>
-        <stringProp name="HTTPSampler.domain">${API_URL}</stringProp>
+        <stringProp name="HTTPSampler.domain">${API_HOST}</stringProp>
         <stringProp name="HTTPSampler.port"></stringProp>
         <stringProp name="HTTPSampler.protocol">https</stringProp>
         <stringProp name="HTTPSampler.contentEncoding"></stringProp>
