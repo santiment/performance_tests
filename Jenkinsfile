@@ -3,9 +3,9 @@ properties([
   disableConcurrentBuilds(),
   parameters([
     string(name: 'THREADS', defaultValue: '100'),
-    string(name: 'DURATION', defaultValue: '300'),
-    string(name: 'API_HOST', defaultValue: 'api-stage.santiment.net'),
-    string(name: 'PROTOCOL', defaultValue: 'https'),
+    string(name: 'DURATION', defaultValue: '180'),
+    string(name: 'API_HOST', defaultValue: 'sanbase'),
+    string(name: 'PROTOCOL', defaultValue: 'http'),
   ])
 ])
 podTemplate(label: 'performace_tests', containers: [
