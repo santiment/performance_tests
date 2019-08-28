@@ -5,7 +5,8 @@ properties([
     string(name: 'THREADS', defaultValue: '100'),
     string(name: 'DURATION', defaultValue: '300'),
     string(name: 'API_HOST', defaultValue: 'api-stage.santiment.net'),
-  ])
+  ]),
+  buildDiscarder(logRotator(numToKeepStr: '20'))
 ])
 podTemplate(label: 'performace_tests', containers: [
   containerTemplate(
