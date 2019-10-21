@@ -6,8 +6,6 @@ properties([
     string(name: 'DURATION', defaultValue: '180'),
     string(name: 'API_HOST', defaultValue: 'sanbase'),
     string(name: 'PROTOCOL', defaultValue: 'http'),
-    string(name: 'DURATION', defaultValue: '300'),
-    string(name: 'API_HOST', defaultValue: 'api-stage.santiment.net'),
   ]),
   buildDiscarder(logRotator(numToKeepStr: '10'))
 ])
